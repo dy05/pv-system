@@ -4,6 +4,7 @@
 - Install PHP and Composer
 - Execute this to create .env file `php -r "file_exists('.env') || copy('.env.example', '.env');"`
 - Create your database and update .env file information's
+- Install project dependencies with the following command `composer install` 
 - Migrate data with the following command `php artisan migrate --seed`
 - Or you can just migrate first with `php artisan migrate` and populate data with `php artisan db:seed`
 - 
