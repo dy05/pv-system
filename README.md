@@ -7,6 +7,7 @@
 - Install project dependencies with the following command `composer install` 
 - Migrate data with the following command `php artisan migrate --seed`
 - Or you can just migrate first with `php artisan migrate` and populate data with `php artisan db:seed`
+- Generate project key with the command `php artisan key:generate`
 - 
 
 

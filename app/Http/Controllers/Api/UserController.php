@@ -33,8 +33,8 @@ class UserController extends Controller
         $data = $request->validate([
             'last_name' => 'string',
             'first_name' => 'string',
-            'phone' => 'string',
-            'email' => 'string|required|unique:users',
+            'phone' => 'string|unique:users',
+            'email' => 'email|required|unique:users',
             'password' => 'string|confirmed|required',
             'avatar' => 'file'
         ]);
@@ -42,6 +42,7 @@ class UserController extends Controller
         $result = [];
 
         try {
+            $data['password'] = bcrypt($data['password']);
             $user = new User($data);
             if ($user->save()) {
                 $result = [
@@ -95,7 +96,7 @@ class UserController extends Controller
         $data = $request->validate([
             'last_name' => 'string',
             'first_name' => 'string',
-            'phone' => 'string',
+            'phone' => 'string|unique:users,phone,' . $user->id,
 //            'email' => 'string|unique:users',
             'email' => 'string|unique:users,email,' . $user->id,
             'avatar' => 'file'
